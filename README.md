@@ -20,3 +20,6 @@ A TTL version would do this:
 Hold seat first
 Set expiration time
 Release seat if expired
+
+
+use redis commander for interact with Redis
