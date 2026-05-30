@@ -45,7 +45,7 @@ func (s *RedisStore) Book(b Booking) (Booking, error) {
 }
 
 func (s *RedisStore) ListBookings(movieID string) []Booking {
-	pattern := fmt.Sprintf("Seat:%s:*", movieID) // Build Redis key pattern to find all seat bookings for this movie ID
+	pattern := fmt.Sprintf("seat:%s:*", movieID) // Build Redis key pattern to find all seat bookings for this movie ID
 	var sessions []Booking
 
 	ctx := context.Background()
