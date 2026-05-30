@@ -19,6 +19,6 @@ type Booking struct {
 }
 
 type BookingStore interface {
-	Book(b Booking) error
+	Book(b Booking) (Booking, error)
 	ListBookings(movieID string) []Booking
 }

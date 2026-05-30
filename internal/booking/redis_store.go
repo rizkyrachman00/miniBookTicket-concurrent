@@ -32,16 +32,16 @@ func sessionKey(id string) string {
 	return fmt.Sprintf("Session: %s", id)
 }
 
-func (s *RedisStore) Book(b Booking) error {
+func (s *RedisStore) Book(b Booking) (Booking, error) {
 	session, err := s.hold(b)
 
 	if err != nil {
-		return err
+		return Booking{}, err
 	}
 
 	log.Printf("Session booked %v", session)
 
-	return nil
+	return session, nil
 }
 
 func (s *RedisStore) ListBookings(movieID string) []Booking {
@@ -103,7 +103,7 @@ func (s *RedisStore) hold(b Booking) (Booking, error) {
 
 func parseSession(val string) (Booking, error) {
 	var data Booking
-	
+
 	// Convert string to []byte, then decode JSON into data
 	if err := json.Unmarshal([]byte(val), &data); err != nil {
 		return Booking{}, err
