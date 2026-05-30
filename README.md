@@ -23,3 +23,11 @@ Release seat if expired
 
 
 use redis commander for interact with Redis
+
+
+<!-- --- How To Run Project --- -->
+
+run redis container / docker compose
+go run cmd/main.go
+
+serve at http://localhost:8080/ 
